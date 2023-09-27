@@ -1,0 +1,147 @@
+import React from 'react'
+import styled from 'styled-components';
+
+
+const Ban = ({myData}) => {
+  
+  const {name}  = myData;
+ 
+  return( 
+  <Wrapper>
+      <div className="container">
+        <div className="grid grid-two-column">
+          <div className="hero-section-data">
+            <p className="intro-data">Welcome to </p>
+            <h1>{name}</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
+              atque temporibus veniam doloribus libero ad error omnis voluptates
+              animi! Suscipit sapiente.
+            </p>
+            
+          </div>
+          {/* our homepage image  */}
+          <div className="hero-section-image">
+            <figure>
+              <img
+                src="images/home_image.png"
+                alt="hero-section"
+                className="img-style"
+              />
+            </figure>
+          </div>
+        </div>
+          
+      </div>
+       
+         
+    </Wrapper>
+  );
+};
+
+
+const Wrapper = styled.section`
+  padding: 18rem 0;
+
+  img {
+    min-width: 10rem;
+    height: 10rem;
+  }
+
+  .hero-section-data {
+    p {
+      margin: 1rem 0;
+    }
+
+    h1 {
+      text-transform: capitalize;
+      font-weight: bold;
+    }
+
+    .intro-data {
+      margin-bottom: 0;
+    }
+  }
+
+  .hero-section-image {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  figure {
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 60%;
+      height: 80%;
+      background-color:#A9FFC9;
+      position: absolute;
+      left: 50%;
+      top: -5rem;
+      z-index: -1;
+    }
+  }
+  .img-style {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    .grid {
+      gap: 10rem;
+    }
+
+    figure::after {
+      content: "";
+      width: 50%;
+      height: 100%;
+      left: 0;
+      top: 10%;
+      /* bottom: 10%; */
+      background-color: #A9FFC9;
+    }
+  }
+
+  .box-container{
+    padding: 9% 8%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem,1fr));
+    column-gap: 1rem;
+}
+.box-container .box{
+    background:#fff;
+    box-shadow: var(--box-shadow);
+    padding: 1rem;
+    text-align: center;
+    border-radius:2px ;
+    margin: 1rem;
+
+
+}
+
+.dashboard {
+ padding:18rem 1rem;
+
+    h3{
+    text-align: center;
+    font-size: 2rem;
+}
+
+p{
+    font-size: 20px;
+    text-transform: capitalize;
+    margin: .5rem 0;
+
+}
+}
+
+`;
+
+
+
+export default Ban
+
+/* if u want to link any page to button use navlink */
