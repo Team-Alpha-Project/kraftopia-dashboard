@@ -5,8 +5,8 @@ import Dataa from '../components/Dataa';
 //import { useAuth } from '../components/context/auth';
 
 
-const Home = () => {
- // const [auth,setAuth]=useAuth
+const Dashboard = () => {
+ //const [auth,setAuth]=useAuth()
  const data={
   name:"Admin dashboard"
  }
@@ -14,13 +14,13 @@ const Home = () => {
    
     <> <Ban myData={data} />;
     <Dataa/>
-    
+   {/* // <pre>{JSON.stringify(auth,null,4)} </pre> */}
     </>
-   
+    
   );
 };
 
 
 
 
-export default Home; 
+export default Dashboard; 

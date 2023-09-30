@@ -215,6 +215,12 @@ const Wrapper = styled.section`
     line-height: 2;
 
 }
+.box-container .box button {
+    width: 20%;
+    border: none;
+    margin: 20px;
+    cursor: pointer;
+}
 
 .box-container .box h4{
     text-transform: capitalize;

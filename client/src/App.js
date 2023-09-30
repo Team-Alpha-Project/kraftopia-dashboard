@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom";
-import Home from "./pages/Home.js";
 import Product from "./pages/Products.js";
 import Orders from "./pages/Orders.js";
 import Users from "./pages/Users.js";
@@ -11,6 +10,9 @@ import { ThemeProvider } from 'styled-components';
 import Header from "./components/Header";
 import  Register  from "./pages/Auth/Register.js";
 import Login from "./pages/Auth/Login.js";
+import Dashboard from "./pages/Dashboard.js";
+import UserDashboard from "./pages/User/UserDashboard.js";
+import PrivateRoute from "./components/Routes/private.js";
 
 
 /* import logo from './logo.svg';
@@ -83,7 +85,11 @@ const App =() => {
     <GlobalStyle />
   <Header/>
          <Routes>
-           <Route path="/"element={<Home/>}/>
+           <Route path="/"element={<Dashboard/>}/>
+           <Route path="/dashboard" element={<PrivateRoute/>}>
+             <Route path=""element={<UserDashboard/>} />
+           </Route>
+           {/* <Route path="/dashboard" element={<UserDashboard/>}/> */}
           <Route path="/register"element={<Register/>}/> 
           <Route path="/login"element={<Login/>}/> 
          <Route path="/products"element={<Product/>}/>

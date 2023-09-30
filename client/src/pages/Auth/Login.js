@@ -13,30 +13,10 @@ const Login = () => {
   const navigate = useNavigate;
 
  //from function
-  // const handleSubmit = async(e) =>{
-  //   e.preventDefault()
-  //   // console.log(name,email,password,address)
-  //   // toast.success("Register Successfull")
 
-  //   try{
-  //      const res =await axios.post('/api/v1/auth/login',
-  //      {email,
-  //       password}
-  //      );
-    
-  //   if(res && res.data.success){
-  //     toast.success(res.data && res.data.message);
-  //     navigate("/");
-  //   }else{
-  //     toast.error(res.data.message)
-  //   }
-  //   }
-  //   catch(error){
-  //     console.log(error)
-  //     toast.error('something went wrong')
-  //   }
-  // }
-   const handleSubmit=async(e) =>{
+
+
+ const handleSubmit=async(e) =>{
     e.preventDefault()
     // console.log(name,email,password,address)
     // toast.success("Register Successfull")
@@ -48,7 +28,7 @@ const Login = () => {
     
      if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-        navigate("/");
+        navigate("/dashboard");
     }
     else{
       toast.error(res.data.message)
@@ -59,7 +39,7 @@ const Login = () => {
     }
   }
   return (
-     <Layout title="Register-kraftopia">
+     <Layout >
     <Wrapper>
  <div className ="form-container">
         <form onSubmit={handleSubmit} method="post">
