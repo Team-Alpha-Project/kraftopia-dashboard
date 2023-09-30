@@ -10,13 +10,13 @@ import { ThemeProvider } from 'styled-components';
 import Header from "./components/Header";
 import  Register  from "./pages/Auth/Register.js";
 import Login from "./pages/Auth/Login.js";
-import Dashboard from "./pages/Dashboard.js";
+import Homee from "./pages/Homee.js"
 import UserDashboard from "./pages/User/UserDashboard.js";
 import PrivateRoute from "./components/Routes/private.js";
 
 
 /* import logo from './logo.svg';
-import './App.css'; */
+import './App.css'; http://localhost:3000/register */
 
 const App =() => {
 
@@ -77,6 +77,17 @@ const App =() => {
       tab: "998px",
     },
   };
+   const renderHeader = () => {
+    // Get the current path from the window location
+    const currentPath =window.location.pathname;
+
+    // Check if the current path is '/register' or '/login'
+    if (currentPath === '/register' || currentPath === '/login') {
+      return null; // Don't render the Header for these routes
+    }
+
+    return <Header />;
+  };
  
   return(  
   <ThemeProvider theme={theme}> 
@@ -85,7 +96,7 @@ const App =() => {
     <GlobalStyle />
   <Header/>
          <Routes>
-           <Route path="/"element={<Dashboard/>}/>
+           <Route path="/"element={<Homee/>}/>
            <Route path="/dashboard" element={<PrivateRoute/>}>
              <Route path=""element={<UserDashboard/>} />
            </Route>

@@ -212,8 +212,7 @@ const [menuIcon,setMenuIcon]=useState();
 
          <li>
            <div className="navbar-user" >
-
-             <DropdownMenu />
+              <DropdownMenu />
           </div>
       
             

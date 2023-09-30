@@ -108,6 +108,45 @@ export const loginController = async (req, res) => {
   }
 };
 
+//forgotPasssword 
+export const forgotPasswordController=()=>{
+  try 
+  {
+    const {email,answer,newPassword}=req.body
+    if(!email){
+      res.status(400).send({message:'email is required'})
+    }
+
+ if(!answer){
+      res.status(400).send({message:'Answer is not required'})
+    }
+ if(!newPassword){
+      res.status(400).send({message:'new password is required'})
+    }
+
+
+    //check
+//     const user = await userModel.findOne({ email,answer })
+//    //validation
+//    if(!user){
+//     return res.status (404).send({
+//       success:false,
+//       message:'Wrong email OR Answer'
+//     })
+//    }
+//  const hashed = await hashPassword
+
+  }catch(error){
+    console.log(error);
+    res.status(500).send({
+      success:false,
+      message:'Something went wrong',
+      error
+    });
+  }
+}
+
+
 //text controller
 export const testController = (req, res) => {
   try {

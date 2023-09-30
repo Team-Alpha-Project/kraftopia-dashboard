@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BsFillPersonFill } from 'react-icons/bs';
+import { useAuth } from './context/auth';
+import { NavLink } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,10 +12,13 @@ function DropdownMenu() {
     setIsOpen(!isOpen);
   };
 
+  const [auth,setAuth]=useAuth();
   const handleLogout = () => {
-    // Add your logout logic here
-    // For example, clearing user session or redirecting to the login page
-    console.log('Logging out...');
+    setAuth({
+      ...auth, user:null, token:''
+    })
+    localStorage.removeItem('auth')
+    toast.success("Logout Succefully");
   };
 
   return (
@@ -29,7 +35,7 @@ function DropdownMenu() {
       
       {isOpen && (
         <div className="dropdown-content">
-          <button onClick={handleLogout}>Logout</button>
+          <NavLink onClick={handleLogout} to="/login" className='button' activeClassName="active">Logout</NavLink>
         </div>
       )}
     </div>
@@ -39,7 +45,7 @@ function DropdownMenu() {
 
 const Wrapper = styled.section` 
 .dropdown {
-  position: relative;
+  position:relative;
   display: inline-block;
   cursor: pointer;
 }
@@ -53,27 +59,46 @@ const Wrapper = styled.section`
 }
 
 .dropdown-content {
-  display: block;
-  position: absolute;
+  display:block ;
+  position:absolute;
   background-color: #f1f1f1;
-  min-width: 160px;
+  min-width: 16px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  right:0.1rem;
+
 }
 
-.dropdown-content button {
-  display: block;
-  width: 90%;
-  padding: 10px;
-  text-align: left;
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
-}
+  .button {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    text-align: left;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+  }
 
-.dropdown-content button:hover {
-  background-color: #ddd;
-}
+  .button:hover {
+    background-color: #ddd;
+  }
+
+  
+
+
+// .dropdown-content NavLink .button {
+//   display: block;
+//   width: 90%;
+//   padding: 10px;
+//   text-align: left;
+//   background-color: inherit;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// .dropdown-content  .button:hover {
+//   background-color: #ddd;
+// }
 
 `;
 
