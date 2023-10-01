@@ -13,6 +13,7 @@ import Login from "./pages/Auth/Login.js";
 import Homee from "./pages/Homee.js"
 import UserDashboard from "./pages/User/UserDashboard.js";
 import PrivateRoute from "./components/Routes/private.js";
+import ForgotPassword from "./pages/Auth/ForgotPassword.js";
 
 
 /* import logo from './logo.svg';
@@ -102,6 +103,7 @@ const App =() => {
            </Route>
            {/* <Route path="/dashboard" element={<UserDashboard/>}/> */}
           <Route path="/register"element={<Register/>}/> 
+          <Route path="/forgot-password"element={<ForgotPassword/>}/> 
           <Route path="/login"element={<Login/>}/> 
          <Route path="/products"element={<Product/>}/>
          <Route path="/orders"element={<Orders/>}/>

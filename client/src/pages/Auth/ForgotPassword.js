@@ -1,39 +1,33 @@
 import React,{ useState } from 'react'
-import { NavLink,useNavigate , useLocation} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-// import { Button } from '../../styles/Button';
 import toast from "react-hot-toast";
-import Layout from '../../components/Layout';
 import axios from 'axios';
-import { useAuth } from '../../components/context/auth';
+// import { Button } from '../../styles/Button';
+//import { useAuth } from '../../components/context/auth';
 
+const ForgotPassword = () => {
 
-const Login = () => {
- 
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
-  const [auth, setAuth ] = useAuth();
+const [email,setEmail]=useState("")
+const [newpassword,setNewPassword]=useState("")
+const [answer,setAnswer]=useState("")
 
-  const navigate = useNavigate;
-  const location = useLocation;
- //form function
+const navigate = useNavigate;
+// const location = useLocation;
+// form function
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/login", {
+      const res = await axios.post("/api/v1/auth/forgot-password", {
         email,
-        password,
+        newpassword,
+        answer,
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-        setAuth({
-          ...auth,
-          user: res.data.user,
-          token: res.data.token,
-        });
- localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate(location.State|| "/");
-      } else {
+        navigate("/login");
+      } 
+      else {
         toast.error(res.data.message);
       }
     } catch (error) {
@@ -41,50 +35,40 @@ const Login = () => {
       toast.error("Something went wrong");
     }
   };
-  return (
-     <Layout >
+return (
     <Wrapper>
  <div className ="form-container">
         <form onSubmit={handleSubmit} method="post">
-            <h1>Login Now</h1>
+            <h1>Reset Password</h1>
             <div className="input-field">
                 <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your mail" required/>
             </div>
             <div className="input-field">
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Enter your password" required/>
+                <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)}  placeholder="Enter your bestfriend name" required/>
+            </div>
+            <div className="input-field">
+                <input type="password" value={newpassword} onChange={(e)=>setNewPassword(e.target.value)}  placeholder="Enter new password" required/>
             </div>
             {/* <!-- <a href="admin_header.html"> --> */}
-            {/* <button type="button" className="btn btn-primary" onClick={() => {navigate('/forgot-password')}}>
-            Forgot Password
-          </button> */} 
-          <NavLink to="/forgot-password" className='click' >
-             Forgot Password
-          </NavLink>
-         
-           <button type="submit" className="btn btn-primary" >
-            LOGIN
-          </button>
-            {/* <!-- </a> --> */}
-            <p>do not have an account ?
-                <NavLink to="/register">register now</NavLink>
-                </p>
-                
+           <button type="submit" className="btn btn-primary"  >
+            RESET
+           </button>
+            
+          {/* <p>do not have an account ?
+                <NavLink to="/register">register now</NavLink> </p> */}
         </form>
     </div>
     </Wrapper>
-    </Layout>
   )
 }
-
-const Wrapper= styled.section`
+ 
+const Wrapper = styled.section`
 .form-container{
     background: ;
     width: 100%;
     min-height: 100vh;
     padding: 11rem 0;
-    position: relative;
-   
-    
+    position: relative;    
 }
 
 .form-container::before{
@@ -154,9 +138,9 @@ const Wrapper= styled.section`
     cursor: pointer;
     margin :1rem;
     background-color:#22c55e;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    // display:flex;
+    // justify-content: center;
+    // align-items: center;
 
 }
 
@@ -170,21 +154,5 @@ const Wrapper= styled.section`
     width: 100%;
 
 }
-
-.click{
-  color: ${({ theme }) => theme.colors.text};
-  font-size: 1.65rem;
-  line-height: 1.5;
-  font-weight:400;
-  margin:1.5rem;
-  cursor:pointer
-}
-
-.click:hover{
-color: #48c576;
-}
-
 `;
-
-
-export default Login
+export default ForgotPassword

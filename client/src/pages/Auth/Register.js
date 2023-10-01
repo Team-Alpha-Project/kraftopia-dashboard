@@ -12,7 +12,9 @@ const Register = () => {
   const [name,setName]=useState("")
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const [phone, setPhone] = useState("");
   const [address,setAddress]=useState("")
+  const [answer,setAnswer]=useState("")
   const navigate = useNavigate();
 
  
@@ -24,7 +26,7 @@ const Register = () => {
 
     try{
        const res =await axios.post('/api/v1/auth/Register',
-       {name,email,password,address}
+       {name,email,password, phone,address,answer}
        );
     
      if (res && res.data.success) {
@@ -53,7 +55,9 @@ const Register = () => {
             <input type="text " name="name" value={name} onChange={(e)=>setName(e.target.value)}  placeholder="Enter your name" required />
             <input type="email" name="email" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Enter your email" required/>
             <input type="password" name="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Enter your password" required/>
+            <input type="text" name="phone" value={phone} onChange={(e)=>setPhone(e.target.value)}  placeholder="Enter your Phone" required/>
             <input type="text" name="address" value={address} onChange={(e)=>setAddress(e.target.value)}  placeholder="Enter your Address" required/>
+            <input type="text" name="answer" value={answer} onChange={(e)=>setAnswer(e.target.value)}  placeholder="what is your bestfriend name" required/>
            
             <button type="submit">
             REGISTER
