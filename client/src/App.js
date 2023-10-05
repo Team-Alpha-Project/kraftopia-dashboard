@@ -14,6 +14,8 @@ import Homee from "./pages/Homee.js"
 import UserDashboard from "./pages/User/UserDashboard.js";
 import PrivateRoute from "./components/Routes/private.js";
 import ForgotPassword from "./pages/Auth/ForgotPassword.js";
+import AdminRoute from "./components/Routes/AdminRoute.js";
+import AdminDashboard from "./pages/Admin/AdminDashboard.js";
 
 
 /* import logo from './logo.svg';
@@ -101,6 +103,8 @@ const App =() => {
            <Route path="/dashboard" element={<PrivateRoute/>}>
              <Route path=""element={<UserDashboard/>} />
            </Route>
+           <Route path="/dashboard" element={<AdminRoute/>}/>
+           <Route path ="admin " element={<AdminDashboard/>} />
            {/* <Route path="/dashboard" element={<UserDashboard/>}/> */}
           <Route path="/register"element={<Register/>}/> 
           <Route path="/forgot-password"element={<ForgotPassword/>}/> 
