@@ -11,11 +11,12 @@ import Header from "./components/Header";
 import  Register  from "./pages/Auth/Register.js";
 import Login from "./pages/Auth/Login.js";
 import Homee from "./pages/Homee.js"
-import UserDashboard from "./pages/User/UserDashboard.js";
-import PrivateRoute from "./components/Routes/private.js";
+
+// import UserDashboard from "./pages/User/UserDashboard.js";
+// import PrivateRoute from "./components/Routes/private.js";
 import ForgotPassword from "./pages/Auth/ForgotPassword.js";
-import AdminRoute from "./components/Routes/AdminRoute.js";
-import AdminDashboard from "./pages/Admin/AdminDashboard.js";
+// import AdminRoute from "./components/Routes/AdminRoute.js";
+// import AdminDashboard from "./pages/Admin/AdminDashboard.js";
 
 
 /* import logo from './logo.svg';
@@ -80,17 +81,17 @@ const App =() => {
       tab: "998px",
     },
   };
-   const renderHeader = () => {
-    // Get the current path from the window location
-    const currentPath =window.location.pathname;
+  //  const renderHeader = () => {
+  //   // Get the current path from the window location
+  //   const currentPath =window.location.pathname;
 
-    // Check if the current path is '/register' or '/login'
-    if (currentPath === '/register' || currentPath === '/login') {
-      return null; // Don't render the Header for these routes
-    }
+  //   // Check if the current path is '/register' or '/login'
+  //   if (currentPath === '/register' || currentPath === '/login') {
+  //     return null; // Don't render the Header for these routes
+  //   }
 
-    return <Header />;
-  };
+  //   return <Header />;
+  // };
  
   return(  
   <ThemeProvider theme={theme}> 
@@ -100,15 +101,19 @@ const App =() => {
   <Header/>
          <Routes>
            <Route path="/"element={<Homee/>}/>
-           <Route path="/dashboard" element={<PrivateRoute/>}>
+           {/* <Route path="/dashboard" element={<PrivateRoute/>}>
              <Route path=""element={<UserDashboard/>} />
-           </Route>
-           <Route path="/dashboard" element={<AdminRoute/>}/>
-           <Route path ="admin " element={<AdminDashboard/>} />
+           </Route> */}
+           
+           {/* this admin dashboard will be added later */}
+           
+           {/* <Route path="/dashboard" element={<AdminRoute/>}>
+           <Route path ="/admin" element={<AdminDashboard/>} />
+          </Route> */}
            {/* <Route path="/dashboard" element={<UserDashboard/>}/> */}
-          <Route path="/register"element={<Register/>}/> 
-          <Route path="/forgot-password"element={<ForgotPassword/>}/> 
-          <Route path="/login"element={<Login/>}/> 
+         <Route path="/register"element={<Register/>}/> 
+         <Route path="/forgot-password"element={<ForgotPassword/>}/> 
+         <Route path="/login"element={<Login/>}/> 
          <Route path="/products"element={<Product/>}/>
          <Route path="/orders"element={<Orders/>}/>
          <Route path="/Users"element={<Users/>}/>
