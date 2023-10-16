@@ -20,8 +20,8 @@ const Addproduct = () => {
                      <input type="text"  name="Name"  id=""  required/>
                      </div>
                       <div className="input-field">
-                    <label htmlFor="">Product price</label>
-                     <input type="text"  name="price"  id=""  required/>
+                    <label htmlFor="">Product Category</label>
+                     <input type="text"  name="Category"  id=""  required/>
                      </div>
                      <div className="input-field">
                     <label htmlFor="">Product price</label>
